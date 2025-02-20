@@ -188,6 +188,8 @@ async function main() {
     readFileSync(process.env.GITHUB_EVENT_PATH ?? "", "utf8")
   );
 
+  console.log("Event: ", process.env.GITHUB_EVENT_NAME);
+  console.log("Action: ", eventData.action);
   if (eventData.action === "opened" || eventData.action === "labeled") {
     diff = await getDiff(
       prDetails.owner,
